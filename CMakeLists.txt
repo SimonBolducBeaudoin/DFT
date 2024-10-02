@@ -4,10 +4,10 @@
 
 set(PROJECT_NAME DFT)                    
 set(LIB_NAME dft)                        
-set(EXTERNAL_INCLUDES ) 
-#set(STATIC_LINKS ) 
+set(EXTERNAL_INCLUDES ../Omp_extra/src )
+set(STATIC_LINKS ../Omp_extra/obj/omp_extra.a) 
 set(COMPILE_OPTIONS_ADD -fopenmp -fopenmp-simd)  
-set(LINKS -fopenmp -fopenmp-simd)       
+set(LINKS -fopenmp -fopenmp-simd)
 
 cmake_minimum_required(VERSION 3.15)
 project(${PROJECT_NAME} ) # Needs to be ontop
@@ -16,7 +16,6 @@ project(${PROJECT_NAME} ) # Needs to be ontop
 list(TRANSFORM EXTERNAL_INCLUDES PREPEND "${PROJECT_SOURCE_DIR}/../" REGEX "^(.*)$" )
 list(TRANSFORM STATIC_LINKS PREPEND "${PROJECT_SOURCE_DIR}/../" REGEX "^(.*)$" )
 list(APPEND LINKS ${STATIC_LINKS})
-
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose Release or Debug" FORCE)
@@ -65,7 +64,3 @@ set(INSTALL_DIR ${PROJECT_SOURCE_DIR})
 install(TARGETS ${LIB_NAME}_py DESTINATION ${INSTALL_DIR} )
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/uninstall.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake" IMMEDIATE @ONLY)
 add_custom_target(uninstall_${PROJECT_NAME} COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake")
-
-
-
-
