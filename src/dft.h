@@ -7,5 +7,5 @@
 typedef std::complex<double> complex_d;
 #include <cmath> // pi, exp
 
-complex_d singleDFTterm(double *signal, unsigned int P, unsigned int Q,
-                        uint64_t N);
+complex_d singleDFTterm(double *signal, unsigned int P, unsigned int Q, uint64_t N);
+complex_d singleDFTterm(int16_t *signal, unsigned int P, unsigned int Q, uint64_t N);
