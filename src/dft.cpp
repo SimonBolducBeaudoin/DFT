@@ -31,6 +31,13 @@ complex_d singleDFTterm(int16_t *signal, unsigned int P, unsigned int Q, uint64_
     }
   }
 
+  if(N%2 == 1)
+  {
+    real += (double)signal[N-1] * cos[(N-1) % Q];
+    imag += (double)signal[N-1] * sin[(N-1) % Q];
+  }
+  
+
   delete[] cos;
   delete[] sin;
 
@@ -72,6 +79,12 @@ complex_d singleDFTterm(double *signal, unsigned int P, unsigned int Q, uint64_t
       real1 += signal[i + 1] * cos[(i + 1) % Q];
       imag1 += signal[i + 1] * sin[(i + 1) % Q];
     }
+  }
+
+  if(N%2 == 1)
+  {
+    real += (double)signal[N-1] * cos[(N-1) % Q];
+    imag += (double)signal[N-1] * sin[(N-1) % Q];
   }
 
   delete[] cos;
