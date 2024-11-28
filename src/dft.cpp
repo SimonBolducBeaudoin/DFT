@@ -47,7 +47,7 @@ complex_d singleDFTterm(int16_t *signal, unsigned int P, unsigned int Q, uint64_
   res.real(real);
   res.imag(imag);
 
-  return res;
+  return res/ (double) (2*N/2); // Normalization
 }
 
 complex_d singleDFTterm(double *signal, unsigned int P, unsigned int Q, uint64_t N) {
@@ -96,5 +96,5 @@ complex_d singleDFTterm(double *signal, unsigned int P, unsigned int Q, uint64_t
   res.real(real);
   res.imag(imag);
 
-  return res;
+  return res/ (double) (2*N/2); // Normalization
 }
